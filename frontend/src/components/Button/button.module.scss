@@ -1,0 +1,15 @@
+@import "../../styles/colors";
+
+.custom_button {
+    padding: 10px 60px;
+
+    &__primary {
+        background-color: $bg-color-dark;
+        color: #FFF;
+    }
+
+    &__secondary {
+        background-color: #FFF;
+        color: #506C4B;
+    }
+}
