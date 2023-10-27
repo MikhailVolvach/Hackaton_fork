@@ -10,7 +10,6 @@ def index(request):
 def register_view(request):
     redis_client = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 
-
     print("handle post register")
 
     unique_cookie_value = str(uuid.uuid4())
@@ -19,7 +18,14 @@ def register_view(request):
 
     response = HttpResponse("Registration successful!")
 
-    response.set_cookie("Cookie", unique_cookie_value)
+    response.set_cookie("Cookie", unique_cookie_value, samesite='None', secure=True)
+
+    print("\n\nHeaders:")
+    for header, value in response.items():
+        print(f"{header}: {value}")
+
+    set_cookie_header = response.get('Set-Cookie')
+    print(f'Set-Cookie Header: {set_cookie_header}')
 
     return response
 

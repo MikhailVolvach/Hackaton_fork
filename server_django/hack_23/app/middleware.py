@@ -10,6 +10,7 @@ class CookieMiddleware:
         redis_client = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
         print(request.COOKIES)
 
+
         if 'Cookie' not in request.COOKIES:
             print("Redirect")
             if request.path != '/register/':
