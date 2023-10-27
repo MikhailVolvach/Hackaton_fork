@@ -1,84 +1,71 @@
-import io
-from PIL import Image
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file
+from io import BytesIO
 from minio import Minio
-from minio.error import S3Error
+from minio.error import MinioException
 
 app = Flask(__name__)
 
-# MinIO server details
-minio_endpoint = "84.201.134.49:9000"
-minio_access_key = "minio"
-minio_secret_key = "minio124"
-minio_bucket_name = "test"
+# Minio configuration
+MINIO_ENDPOINT = '84.201.134.49:9000'
+MINIO_ACCESS_KEY = 'minio'
+MINIO_SECRET_KEY = 'minio124'
+MINIO_BUCKET_NAME = 'test'
 
-# Initialize MinIO client
-minio_client = Minio(minio_endpoint,
-                     access_key=minio_access_key,
-                     secret_key=minio_secret_key,
-                     secure=False)  # Set to True if MinIO server uses HTTPS
+# Create a Minio client
+minio_client = Minio(MINIO_ENDPOINT,
+                     access_key=MINIO_ACCESS_KEY,
+                     secret_key=MINIO_SECRET_KEY,
+                     secure=False)  # Set secure to True if your Minio server uses HTTPS
 
-# API endpoint to upload a picture to MinIO
-@app.route("/upload", methods=["POST"])
-def upload_picture():
+def upload_image_to_minio(image_data, object_name, content_type):
     try:
-        # Get the uploaded file
-        file = request.files["file"]
-        
-        # Check if the file is empty or corrupted
-        if file.filename == '':
-            return "No selected file", 400
+        minio_client.put_object(bucket_name=MINIO_BUCKET_NAME,
+                                object_name=object_name,
+                                data=BytesIO(image_data),
+                                length=len(image_data),
+                                content_type=content_type)
+        return True
+    except MinioException as err:
+        print(err)
+        return False
 
-        # Save the file to MinIO bucket
-        print(file, len(file.read()))
-
-        minio_client.put_object(minio_bucket_name, file.filename, file, length=100,
-                                content_type=file.content_type)
-
-        return "File uploaded successfully!"
-    except S3Error as e:
-        return str(e), 500
-
-# API endpoint to download a picture from MinIO
-@app.route("/download/<filename>", methods=["GET"])
-def download_picture(filename):
+def get_image_from_minio(object_name):
     try:
-        # Get the file from MinIO bucket
-        file_data = minio_client.get_object(minio_bucket_name, filename)
+        image_data = minio_client.get_object(bucket_name=MINIO_BUCKET_NAME,
+                                             object_name=object_name).read()
+        return image_data
+    except MinioException as err:
+        print(err)
+        return None
 
-        # Create a temporary file to store the downloaded file
-        temp_file_path = f"/tmp/{filename}"
-        with open(temp_file_path, "wb") as temp_file:
-            for data in file_data.stream(32 * 1024):
-                temp_file.write(data)
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    file = request.files['file']
+    object_name = file.filename
+    content_type = file.content_type
+    image_data = file.read()
 
-        # Return the downloaded file
-        return send_file(temp_file_path, as_attachment=True)
+    if upload_image_to_minio(image_data, object_name, content_type):
+        return "Image uploaded successfully to Minio."
+    else:
+        return "Failed to upload image to Minio."
 
-    except S3Error as e:
-        return str(e), 500
+@app.route('/view/<object_name>', methods=['GET'])
+def get_image(object_name):
+    image_data = get_image_from_minio(object_name)
+    if image_data:
+        return send_file(BytesIO(image_data), mimetype='image/jpeg')
+    else:
+        return "Image not found."
     
-@app.route("/view/<filename>", methods=["GET"])
-def view_picture(filename):
-    try:
-        # Get the file from MinIO bucket
-        file_data = minio_client.get_object(minio_bucket_name, filename)
 
-        # Create a temporary file to store the downloaded file
-        temp_file_path = f"/tmp/{filename}"
-        with open(temp_file_path, "wb") as temp_file:
-            for data in file_data.stream(32 * 1024):
-                temp_file.write(data)
+@app.route('/download/<object_name>', methods=['GET'])
+def download_image(object_name):
+    image_data = get_image_from_minio(object_name)
+    if image_data:
+        return send_file(BytesIO(image_data), mimetype='image/jpeg', as_attachment=True, download_name=f"{object_name}")
+    else:
+        return "Image not found."
 
-        # Return the downloaded file
-        return send_file(temp_file_path, as_attachment=False)
-
-    except S3Error as e:
-        return str(e), 500
-    
-@app.route("/return_ok", methods=["GET"])
-def return_ok():
-    return jsonify({"status": "ok"})
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=9988)
