@@ -25,6 +25,19 @@
 		0717C1702AEA70DB00C140C9 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 0717C16F2AEA70DB00C140C9 /* PinLayout */; };
 		0717C1732AEA710200C140C9 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1722AEA710200C140C9 /* Font.swift */; };
 		0717C1752AEA724E00C140C9 /* NetworkManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1742AEA724E00C140C9 /* NetworkManagerError.swift */; };
+		0717C1842AEBADA100C140C9 /* RegistationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1832AEBADA100C140C9 /* RegistationViewController.swift */; };
+		0717C1872AEBAE1700C140C9 /* RegistationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1862AEBAE1700C140C9 /* RegistationData.swift */; };
+		0717C1892AEBAE3300C140C9 /* RegistrationNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1882AEBAE3300C140C9 /* RegistrationNetworkManager.swift */; };
+		0717C18B2AEBAE5000C140C9 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C18A2AEBAE5000C140C9 /* RegistrationModel.swift */; };
+		0717C18F2AEBB61C00C140C9 /* CicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C18E2AEBB61C00C140C9 /* CicleView.swift */; };
+		0717C1922AEBB77000C140C9 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1912AEBB77000C140C9 /* CustomViewController.swift */; };
+		0717C1952AEBCBB000C140C9 /* FormTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1942AEBCBB000C140C9 /* FormTextView.swift */; };
+		0717C1972AEBEF7200C140C9 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1962AEBEF7200C140C9 /* AuthModel.swift */; };
+		0717C1992AEBEF8000C140C9 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1982AEBEF8000C140C9 /* AuthViewController.swift */; };
+		0717C19C2AEBEF9400C140C9 /* AuthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C19B2AEBEF9400C140C9 /* AuthData.swift */; };
+		0717C19E2AEBEF9E00C140C9 /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C19D2AEBEF9E00C140C9 /* AuthNetworkManager.swift */; };
+		0717C1A02AEBF47B00C140C9 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C19F2AEBF47B00C140C9 /* TryViewController.swift */; };
+		0717C1A32AEBF9D300C140C9 /* TryNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1A22AEBF9D300C140C9 /* TryNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +60,19 @@
 		0717C16C2AEA6D7D00C140C9 /* ImageManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerError.swift; sourceTree = "<group>"; };
 		0717C1722AEA710200C140C9 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		0717C1742AEA724E00C140C9 /* NetworkManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerError.swift; sourceTree = "<group>"; };
+		0717C1832AEBADA100C140C9 /* RegistationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationViewController.swift; sourceTree = "<group>"; };
+		0717C1862AEBAE1700C140C9 /* RegistationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationData.swift; sourceTree = "<group>"; };
+		0717C1882AEBAE3300C140C9 /* RegistrationNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationNetworkManager.swift; sourceTree = "<group>"; };
+		0717C18A2AEBAE5000C140C9 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		0717C18E2AEBB61C00C140C9 /* CicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CicleView.swift; sourceTree = "<group>"; };
+		0717C1912AEBB77000C140C9 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		0717C1942AEBCBB000C140C9 /* FormTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextView.swift; sourceTree = "<group>"; };
+		0717C1962AEBEF7200C140C9 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		0717C1982AEBEF8000C140C9 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0717C19B2AEBEF9400C140C9 /* AuthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthData.swift; sourceTree = "<group>"; };
+		0717C19D2AEBEF9E00C140C9 /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
+		0717C19F2AEBF47B00C140C9 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
+		0717C1A22AEBF9D300C140C9 /* TryNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +118,9 @@
 		0717C1502AEA60CA00C140C9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0717C1932AEBCB7A00C140C9 /* FormTextView */,
+				0717C1902AEBB75800C140C9 /* CustomViewController */,
+				0717C18D2AEBB60800C140C9 /* CircleView */,
 				0717C1712AEA70F700C140C9 /* Font */,
 				0717C1612AEA65E300C140C9 /* View */,
 				0717C1522AEA60DA00C140C9 /* Button */,
@@ -139,8 +168,8 @@
 		0717C1552AEA618900C140C9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0717C1402AEA60A900C140C9 /* MainViewController.swift */,
 				0717C1622AEA6AEA00C140C9 /* MainModel.swift */,
+				0717C1402AEA60A900C140C9 /* MainViewController.swift */,
 				0717C1642AEA6B2200C140C9 /* Network */,
 			);
 			path = Main;
@@ -149,7 +178,10 @@
 		0717C15C2AEA63C200C140C9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0717C1A12AEBF99800C140C9 /* TryImage */,
 				0717C15D2AEA63D500C140C9 /* TabBarController.swift */,
+				0717C1822AEBAD8B00C140C9 /* Registration */,
+				0717C1812AEBAD3D00C140C9 /* Auth */,
 				0717C1552AEA618900C140C9 /* Main */,
 			);
 			path = Modules;
@@ -188,6 +220,77 @@
 				0717C1722AEA710200C140C9 /* Font.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		0717C1812AEBAD3D00C140C9 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0717C1962AEBEF7200C140C9 /* AuthModel.swift */,
+				0717C1982AEBEF8000C140C9 /* AuthViewController.swift */,
+				0717C19A2AEBEF8300C140C9 /* Network */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0717C1822AEBAD8B00C140C9 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				0717C18A2AEBAE5000C140C9 /* RegistrationModel.swift */,
+				0717C1832AEBADA100C140C9 /* RegistationViewController.swift */,
+				0717C1852AEBAE0400C140C9 /* Network */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		0717C1852AEBAE0400C140C9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0717C1862AEBAE1700C140C9 /* RegistationData.swift */,
+				0717C1882AEBAE3300C140C9 /* RegistrationNetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0717C18D2AEBB60800C140C9 /* CircleView */ = {
+			isa = PBXGroup;
+			children = (
+				0717C18E2AEBB61C00C140C9 /* CicleView.swift */,
+			);
+			path = CircleView;
+			sourceTree = "<group>";
+		};
+		0717C1902AEBB75800C140C9 /* CustomViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0717C1912AEBB77000C140C9 /* CustomViewController.swift */,
+			);
+			path = CustomViewController;
+			sourceTree = "<group>";
+		};
+		0717C1932AEBCB7A00C140C9 /* FormTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0717C1942AEBCBB000C140C9 /* FormTextView.swift */,
+			);
+			path = FormTextView;
+			sourceTree = "<group>";
+		};
+		0717C19A2AEBEF8300C140C9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0717C19B2AEBEF9400C140C9 /* AuthData.swift */,
+				0717C19D2AEBEF9E00C140C9 /* AuthNetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0717C1A12AEBF99800C140C9 /* TryImage */ = {
+			isa = PBXGroup;
+			children = (
+				0717C19F2AEBF47B00C140C9 /* TryViewController.swift */,
+				0717C1A22AEBF9D300C140C9 /* TryNetworkManager.swift */,
+			);
+			path = TryImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0717C1892AEBAE3300C140C9 /* RegistrationNetworkManager.swift in Sources */,
 				0717C1602AEA65D500C140C9 /* View.swift in Sources */,
 				0717C1752AEA724E00C140C9 /* NetworkManagerError.swift in Sources */,
+				0717C1842AEBADA100C140C9 /* RegistationViewController.swift in Sources */,
+				0717C1992AEBEF8000C140C9 /* AuthViewController.swift in Sources */,
 				0717C1412AEA60A900C140C9 /* MainViewController.swift in Sources */,
 				0717C1732AEA710200C140C9 /* Font.swift in Sources */,
 				0717C13D2AEA60A900C140C9 /* AppDelegate.swift in Sources */,
@@ -275,11 +381,21 @@
 				0717C13F2AEA60A900C140C9 /* SceneDelegate.swift in Sources */,
 				0717C15B2AEA636A00C140C9 /* Color + config.swift in Sources */,
 				0717C16D2AEA6D7D00C140C9 /* ImageManagerError.swift in Sources */,
+				0717C1A02AEBF47B00C140C9 /* TryViewController.swift in Sources */,
 				0717C1632AEA6AEA00C140C9 /* MainModel.swift in Sources */,
+				0717C1872AEBAE1700C140C9 /* RegistationData.swift in Sources */,
+				0717C19E2AEBEF9E00C140C9 /* AuthNetworkManager.swift in Sources */,
+				0717C18F2AEBB61C00C140C9 /* CicleView.swift in Sources */,
 				0717C1682AEA6B4C00C140C9 /* MainData.swift in Sources */,
 				0717C15E2AEA63D500C140C9 /* TabBarController.swift in Sources */,
+				0717C19C2AEBEF9400C140C9 /* AuthData.swift in Sources */,
 				0717C1662AEA6B3700C140C9 /* MainNetworkManager.swift in Sources */,
+				0717C1952AEBCBB000C140C9 /* FormTextView.swift in Sources */,
 				0717C1592AEA634E00C140C9 /* Color.swift in Sources */,
+				0717C1922AEBB77000C140C9 /* CustomViewController.swift in Sources */,
+				0717C1972AEBEF7200C140C9 /* AuthModel.swift in Sources */,
+				0717C18B2AEBAE5000C140C9 /* RegistrationModel.swift in Sources */,
+				0717C1A32AEBF9D300C140C9 /* TryNetworkManager.swift in Sources */,
 				0717C1572AEA623A00C140C9 /* Color + init.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -407,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -424,6 +540,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3GHGN4X8V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hackaton_bmstu2023/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -450,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3GHGN4X8V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hackaton_bmstu2023/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

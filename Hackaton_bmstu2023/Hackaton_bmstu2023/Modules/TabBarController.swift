@@ -26,7 +26,7 @@ final class TabBarController: UITabBarController {
                             image: SeconsVC.Images.tabBarImage,
                             title: SeconsVC.Title.tabBarTitle),
             
-            configureTabBar(with: UINavigationController(rootViewController: MainViewController()),
+            configureTabBar(with: UINavigationController(rootViewController: TryViewController()),
                             image: ThirdVC.Images.tabBarImage,
                             title: ThirdVC.Title.tabBarTitle)]
         

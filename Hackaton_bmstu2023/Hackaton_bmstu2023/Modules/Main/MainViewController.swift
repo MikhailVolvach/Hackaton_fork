@@ -8,7 +8,7 @@
 import UIKit
 import PinLayout
 
-class MainViewController: UIViewController {
+class MainViewController: CustomViewController {
     
 }
 
@@ -31,3 +31,5 @@ private extension MainViewController {
         view.backgroundColor = .Background.customBackground
     }
 }
+
+
