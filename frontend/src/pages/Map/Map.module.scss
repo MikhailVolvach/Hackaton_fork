@@ -1,0 +1,18 @@
+.map {
+    &__grid {
+        width: 80%;
+        max-width: 700px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: repeat(100, 1fr);
+        grid-template-rows: repeat(100, 1fr);
+        aspect-ratio: 1;
+    }
+
+    &__cell {
+        padding: 0; /* Уберите отступы внутри ячейки */
+        //border: 1px solid black; /* Границы для ячейки (по желанию) */
+        aspect-ratio: 1;
+    }
+}

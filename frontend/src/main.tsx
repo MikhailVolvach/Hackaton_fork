@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import App from './app/app';
-import './styles/styles.scss';
+import 'styles/styles.scss';
 import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(

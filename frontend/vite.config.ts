@@ -16,12 +16,12 @@ export default defineConfig({
         changeOrigin: true
       }
     },
-    host: 'localhost',
+    host: '0.0.0.0',
   },
 
   preview: {
     port: 4300,
-    host: 'localhost',
+    host: '0.0.0.0',
   },
 
   plugins: [react(), nxViteTsPaths()],
