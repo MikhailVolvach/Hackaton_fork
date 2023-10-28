@@ -34,7 +34,7 @@ final class FormTextView: UIView {
         enterimageView.pin
             .left(15)
             .top(8)
-            .size(CGSize(width: 20, height: 20))
+            .size(CGSize(width: 30, height: 30))
         
         enterTextField.pin
             .right(of: enterimageView)

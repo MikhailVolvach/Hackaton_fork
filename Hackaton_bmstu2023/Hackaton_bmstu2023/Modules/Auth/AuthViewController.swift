@@ -10,16 +10,15 @@ import UIKit
 final class AuthViewController: CustomViewController {
     
     private let topCicrleView = CicleView()
-    private var bottomCicrleView = CicleView(frame: CGRect(x: -81, y: 347, width: 348, height: 348))
-    private let registrationView = UIView()
-    private let registrationLabel = UILabel()
+    private var bottomCicrleView = CicleView()
+    private let conteinerView = UIView()
+    private let enterLabel = UILabel()
     private let helloLabel = UILabel()
-    
     private let userNameFormTextView = FormTextView()
     private let passwordFormTextView = FormTextView()
     private let registerButton = UIButton()
     private let adviceLabel = UILabel()
-    private let         enterButton = UIButton()
+    private let enterButton = UIButton()
 }
 
 
@@ -29,9 +28,9 @@ extension AuthViewController {
         super.viewDidLoad()
         setup()
         
-        registrationView.addSubviews(userNameFormTextView, passwordFormTextView,         enterButton, adviceLabel, registerButton)
+        conteinerView.addSubviews(userNameFormTextView, passwordFormTextView, enterButton, adviceLabel, registerButton)
         
-        view.addSubviews(topCicrleView, bottomCicrleView, registrationView, helloLabel, registrationLabel)
+        view.addSubviews(topCicrleView, bottomCicrleView, conteinerView, helloLabel, enterLabel)
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,16 +40,17 @@ extension AuthViewController {
             .top(-100)
             .right(50)
             .size(CGSize(width: 400, height: 400))
-        
-        registrationLabel.pin
-            .top(100)
-            .horizontally(62)
-            .height(36)
-        
-        registrationView.pin
+
+        conteinerView.pin
             .vCenter()
             .horizontally(32)
-            .height(350)
+            .height(250)
+        
+        enterLabel.pin
+            .above(of: conteinerView)
+            .marginBottom(30)
+            .horizontally(62)
+            .height(36)
         
         bottomCicrleView.pin
             .bottom(-60)
@@ -63,53 +63,62 @@ extension AuthViewController {
             .height(16)
         
         userNameFormTextView.pin
-            .top(26)
+            .top(36)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         passwordFormTextView.pin
             .below(of: userNameFormTextView)
-            .marginTop(8)
+            .marginTop(12)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         enterButton.pin
             .below(of: passwordFormTextView)
-            .marginTop(8)
+            .marginTop(12)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         adviceLabel.pin
-            .below(of:         enterButton)
-            .marginTop(8)
-            .left(40)
+            .below(of: enterButton)
+            .marginTop(12)
+            .left(20)
             .width(110)
             .sizeToFit(.width)
         
         registerButton.pin
-            .below(of:         enterButton)
-            .marginTop(8)
-            .right(40)
-            .size(CGSize(width: 150, height: 15))
+            .below(of: enterButton)
+            .marginTop(12)
+            .right(45)
+            .size(CGSize(width: 150, height: 17))
     }
 }
 
 //MARK: - private methods
 private extension AuthViewController {
     func setup() {
-        registrationView.backgroundColor = .СontainerView.customBackground
-        registrationView.layer.cornerRadius = 40
+        conteinerView.alpha = 0.8
+        conteinerView.backgroundColor = .СontainerView.customBackground
+        conteinerView.layer.cornerRadius = 40
         
-        [registrationLabel,helloLabel].forEach {
+        [enterLabel,helloLabel].forEach {
             $0.textAlignment = .center
             $0.textColor = .Font.customMainWhite
         }
         
-        registrationLabel.text = "Вход"
+        let headerFont = TextStyle.header.font
+        let bodySmallFont = TextStyle.bodySmall.font
+        let bodyBigFont = TextStyle.bodyBig.font
+        
+        enterLabel.font = headerFont
+        helloLabel.font = bodySmallFont
+        adviceLabel.font = bodyBigFont
+        registerButton.titleLabel?.font = bodyBigFont
+        
+        enterLabel.text = "Вход"
         helloLabel.text = "Добро пожаловать!"
         adviceLabel.text = "Нет аккаунта?"
         adviceLabel.textColor = .Font.customSecondGrayWhite
-        
         
         enterButton.backgroundColor = .Button.customBlue
         enterButton.setTitle("Войти", for: .normal)
@@ -120,6 +129,7 @@ private extension AuthViewController {
         passwordFormTextView.configFormTextView(with: UIImage(named: "key")!, title: "Пароль")
         
         registerButton.setTitle("зарегистрироваться", for: .normal)
+        
         registerButton.setTitleColor(.Button.customBlue, for: .normal)
         registerButton.titleLabel?.textAlignment = .center
         
@@ -136,14 +146,19 @@ private extension AuthViewController {
         let password = passwordFormTextView.enterTextField.text
         
         if password != "" && username != "" {
-            navigationController?.pushViewController(TabBarController(), animated: true)
+            let newViewController = TabBarController()
+            newViewController.modalPresentationStyle = .fullScreen
+            self.present(newViewController, animated: true, completion: nil)
         } else {
-            print("введите логин и пароль")
+            self.showErrorHUDView(with: "введите логин и пароль")
         }
     }
     
     @objc private func registerButtonTapped() {
-        navigationController?.pushViewController(RegistationViewController(), animated: true)
+        let newViewController = RegistationViewController()
+        newViewController.modalPresentationStyle = .fullScreen
+        newViewController.modalTransitionStyle = .flipHorizontal
+        self.present(newViewController, animated: true, completion: nil)
     }
 }
 

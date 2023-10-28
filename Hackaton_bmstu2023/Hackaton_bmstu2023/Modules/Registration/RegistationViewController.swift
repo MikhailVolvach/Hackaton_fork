@@ -10,8 +10,8 @@ import UIKit
 final class RegistationViewController: CustomViewController {
     
     private let topCicrleView = CicleView()
-    private var bottomCicrleView = CicleView(frame: CGRect(x: -81, y: 347, width: 348, height: 348))
-    private let registrationView = UIView()
+    private var bottomCicrleView = CicleView()
+    private let conteinerView = UIView()
     private let registrationLabel = UILabel()
     private let helloLabel = UILabel()
     
@@ -30,9 +30,9 @@ extension RegistationViewController {
         super.viewDidLoad()
         setup()
         
-        registrationView.addSubviews(userNameFormTextView, passwordFormTextView, againstPasswordFormTextView, registerButton, adviceLabel, enterButton)
+        conteinerView.addSubviews(userNameFormTextView, passwordFormTextView, againstPasswordFormTextView, registerButton, adviceLabel, enterButton)
         
-        view.addSubviews(topCicrleView, bottomCicrleView, registrationView, helloLabel, registrationLabel)
+        view.addSubviews(topCicrleView, bottomCicrleView, conteinerView, helloLabel, registrationLabel)
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,18 +40,19 @@ extension RegistationViewController {
         
         topCicrleView.pin
             .top(-115)
-            .left(50)
+            .left(40)
             .size(CGSize(width: 400, height: 400))
         
-        registrationLabel.pin
-            .top(100)
-            .horizontally(62)
-            .height(36)
-        
-        registrationView.pin
+        conteinerView.pin
             .vCenter()
             .horizontally(32)
-            .height(350)
+            .height(300)
+        
+        registrationLabel.pin
+            .above(of: conteinerView)
+            .marginBottom(30)
+            .horizontally(62)
+            .height(36)
         
         bottomCicrleView.pin
             .bottom(-50)
@@ -66,57 +67,66 @@ extension RegistationViewController {
         userNameFormTextView.pin
             .top(26)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         passwordFormTextView.pin
             .below(of: userNameFormTextView)
-            .marginTop(8)
+            .marginTop(12)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         againstPasswordFormTextView.pin
             .below(of: passwordFormTextView)
-            .marginTop(8)
+            .marginTop(12)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         registerButton.pin
             .below(of: againstPasswordFormTextView)
-            .marginTop(8)
+            .marginTop(12)
             .horizontally(6)
-            .height(36)
+            .height(45)
         
         adviceLabel.pin
             .below(of: registerButton)
-            .marginTop(8)
-            .left(40)
-            .width(110)
+            .marginTop(12)
+            .left(30)
+            .width(140)
             .sizeToFit(.width)
         
         enterButton.pin
             .below(of: registerButton)
-            .marginTop(8)
-            .right(40)
-            .size(CGSize(width: 39, height: 15))
+            .marginTop(12)
+            .right(20)
+            .size(CGSize(width: 110, height: 20))
     }
 }
 
 //MARK: - private methods
 private extension RegistationViewController {
     func setup() {
-        registrationView.backgroundColor = .СontainerView.customBackground
-        registrationView.layer.cornerRadius = 40
+        conteinerView.backgroundColor = .СontainerView.customBackground
+        conteinerView.alpha = 0.8
+        conteinerView.layer.cornerRadius = 40
         
         [registrationLabel,helloLabel].forEach {
             $0.textAlignment = .center
             $0.textColor = .Font.customMainWhite
         }
         
+        let headerFont = TextStyle.header.font
+        let bodySmallFont = TextStyle.bodySmall.font
+        let bodyBigFont = TextStyle.bodyBig.font
+        
+        registrationLabel.font = headerFont
+        helloLabel.font = bodySmallFont
+        adviceLabel.font = bodyBigFont
+        enterButton.titleLabel?.font = bodyBigFont
+        
         registrationLabel.text = "Регистрация"
         helloLabel.text = "Добро пожаловать!"
         adviceLabel.text = "Уже есть аккаунт?"
         adviceLabel.textColor = .Font.customSecondGrayWhite
-        
         
         registerButton.backgroundColor = .Button.customBlue
         registerButton.setTitle("Зарегистрироваться", for: .normal)
@@ -127,7 +137,7 @@ private extension RegistationViewController {
         passwordFormTextView.configFormTextView(with: UIImage(named: "key")!, title: "Пароль")
         againstPasswordFormTextView.configFormTextView(with: UIImage(named: "key")!, title: "Подтвердите пароль")
         
-        enterButton.setTitle("Войти!", for: .normal)
+        enterButton.setTitle("войти", for: .normal)
         enterButton.setTitleColor(.Button.customBlue, for: .normal)
         enterButton.titleLabel?.textAlignment = .center
         
@@ -139,22 +149,29 @@ private extension RegistationViewController {
         enterButton.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func enterButtonTapped() {
-        navigationController?.pushViewController(AuthViewController(), animated: true)
+    @objc func enterButtonTapped() {
+        let newViewController = AuthViewController()
+        newViewController.modalPresentationStyle = .fullScreen
+        newViewController.modalTransitionStyle = .flipHorizontal
+        self.present(newViewController, animated: true, completion: nil)
+        //        navigationController?.pushViewController(AuthViewController(), animated: true)
     }
     
-    @objc private func registerButtonTapped() {
+    @objc func registerButtonTapped() {
         let username = userNameFormTextView.enterTextField.text
         let password = passwordFormTextView.enterTextField.text
         let confirmPassword = againstPasswordFormTextView.enterTextField.text
-
+        
         if password == confirmPassword && username != "" {
-            navigationController?.pushViewController(TabBarController(), animated: true)
+            let newViewController = TabBarController()
+            newViewController.modalPresentationStyle = .fullScreen
+            self.present(newViewController, animated: true, completion: nil)
+            //            navigationController?.pushViewController(TabBarController(), animated: true)
         } else {
             if password != confirmPassword {
-                print("пароли не совпадают!")
+                self.showErrorHUDView(with: "пароли не совпадают!")
             } else if username == "" {
-                print("введите имя пользователя!")
+                self.showErrorHUDView(with: "введите имя пользователя!")
             }
         }
     }
@@ -169,6 +186,6 @@ extension RegistationViewController {
 extension RegistationViewController: UITextFieldDelegate {
     
     @objc private func dismissKeyboard() {
-         view.endEditing(true)
-     }
+        view.endEditing(true)
+    }
 }

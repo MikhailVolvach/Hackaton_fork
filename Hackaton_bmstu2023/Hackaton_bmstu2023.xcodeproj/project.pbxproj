@@ -38,6 +38,7 @@
 		0717C19E2AEBEF9E00C140C9 /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C19D2AEBEF9E00C140C9 /* AuthNetworkManager.swift */; };
 		0717C1A02AEBF47B00C140C9 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C19F2AEBF47B00C140C9 /* TryViewController.swift */; };
 		0717C1A32AEBF9D300C140C9 /* TryNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1A22AEBF9D300C140C9 /* TryNetworkManager.swift */; };
+		0717C1A52AEC545E00C140C9 /* ErrorHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0717C1A42AEC545E00C140C9 /* ErrorHUDView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		0717C19D2AEBEF9E00C140C9 /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
 		0717C19F2AEBF47B00C140C9 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0717C1A22AEBF9D300C140C9 /* TryNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryNetworkManager.swift; sourceTree = "<group>"; };
+		0717C1A42AEC545E00C140C9 /* ErrorHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHUDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				0717C1912AEBB77000C140C9 /* CustomViewController.swift */,
+				0717C1A42AEC545E00C140C9 /* ErrorHUDView.swift */,
 			);
 			path = CustomViewController;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				0717C1922AEBB77000C140C9 /* CustomViewController.swift in Sources */,
 				0717C1972AEBEF7200C140C9 /* AuthModel.swift in Sources */,
 				0717C18B2AEBAE5000C140C9 /* RegistrationModel.swift in Sources */,
+				0717C1A52AEC545E00C140C9 /* ErrorHUDView.swift in Sources */,
 				0717C1A32AEBF9D300C140C9 /* TryNetworkManager.swift in Sources */,
 				0717C1572AEA623A00C140C9 /* Color + init.swift in Sources */,
 			);

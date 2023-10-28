@@ -13,21 +13,12 @@ enum TextStyle {
     case titleSmall
     case bodyBig
     case bodySmall
-    
 }
 
 extension TextStyle {
     var font: UIFont {
         switch self {
-        case .header:
-            return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-        case .titleBig:
-            return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-        case .titleSmall:
-            return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-        case .bodyBig:
-            return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-        case .bodySmall:
+        case .header, .bodyBig, .bodySmall, .titleBig, .titleSmall:
             return UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
         }
     }
@@ -35,7 +26,7 @@ extension TextStyle {
     private var fontSize: CGFloat {
         switch self {
         case .header:
-            return 20
+            return 40
         case .titleBig:
             return 14
         case .titleSmall:
