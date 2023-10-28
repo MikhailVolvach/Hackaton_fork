@@ -23,4 +23,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('say_hello/', views.index),
     path('register/', views.register_view),
+
+    path(r'move/up', views.move_up),
+    path(r'move/down', views.move_down),
+    path(r'move/left', views.move_left),
+    path(r'move/right', views.move_right),
+
+    path(r'map/generated/', views.map_generated),
+    path(r'map/get', views.map_get),
+    path(r'map/render', views.map_render),
+
+    path(r'route/generate', views.route_generate)
 ]

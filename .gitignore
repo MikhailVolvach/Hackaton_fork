@@ -4,3 +4,4 @@ server_django/hack_23/hack_23/__pycache__/
 server_django/.env/
 flask_test_picture/.env/
 server/db/data/
+server_django/hack_23/app/migrations/__pycache__/
