@@ -3,13 +3,13 @@ import classNames   from "classnames";
 import chroma from 'chroma-js';
 
 import s from './MapElement.module.scss';
-import {CoordinateType} from "utils/types";
+import {CellCoordinateType} from "utils/types";
 
 export interface IMapElement {
     className?: string;
     value: number;
-    onClick: (coord: CoordinateType) => void;
-    coord: CoordinateType;
+    onClick: (coord: CellCoordinateType) => void;
+    coord: CellCoordinateType;
 }
 
 const MapElement: FC<IMapElement> = ({ className = '', value = 0, onClick, coord}) => {

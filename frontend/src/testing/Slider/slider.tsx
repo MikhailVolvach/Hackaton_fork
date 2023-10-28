@@ -3,9 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import 'swiper/scss';
-//import 'swiper/scss/navigation';
-//import 'swiper/scss/pagination';
-import 'swiper/scss/scrollbar';
 
 //export interface ComponentWithSliderProps {
 //    

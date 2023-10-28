@@ -1,0 +1,92 @@
+.infoPanel {
+    margin-top: 10px;
+    border: 1px solid #EDEDED;
+    border-radius: 10px;
+    color: #000;
+    padding: 10px;
+    max-width: 400px;
+    &__header {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__title {
+        color: #000;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__segment {
+        margin-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #EDEDED;
+        &_title {
+            margin-bottom: 4px;
+        }
+
+        &__body {
+            width: 100%;
+        }
+
+        &__slide {
+            margin-right: 10px;
+        }
+    }
+
+    &__battery {
+
+    }
+
+    &__slider {
+        
+    }
+}
+
+.battery {
+    display: flex;
+    flex-direction: column;
+    
+    
+    &__bar {
+        width: 100%;
+        min-width: 300px;
+        height: 10px;
+        background-color: #EFEFEF;
+        border-radius: 10px;
+        display: flex;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    &__level {
+        background-color: #6CDC72;
+    }
+
+    &__percentage {
+        margin-top: 2px;
+        width: 100%;
+    }
+}
+
+.percentage {
+    display: flex;
+    justify-content: space-between;
+    &__mark {
+        &_start {
+
+        }
+
+        &_mid {
+
+        }
+
+        &_end {
+
+        }
+    }
+}

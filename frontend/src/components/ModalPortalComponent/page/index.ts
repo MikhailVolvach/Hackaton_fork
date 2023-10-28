@@ -1,0 +1,1 @@
+export {default, TestPageProps} from './TestPage';

@@ -1,0 +1,55 @@
+.controls {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #EDEDED;
+    border-radius: 10px;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+        place-items: center center;
+    }
+
+    &__arrow {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+
+        &[data-direction="forward"],
+        &_forward {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            transform: rotate(-90deg);
+        }
+
+        &[data-direction="left"],
+        &_left {
+            grid-column: 1/2;
+            grid-row: 2/3;
+            transform: rotate(180deg);
+        }
+
+        &[data-direction="back"],
+        &_back {
+            grid-column: 2/3;
+            transform: rotate(90deg);
+        }
+
+
+        &[data-direction="right"],
+        &_right {
+            grid-column: 3/4;
+            grid-row: 2/3;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}

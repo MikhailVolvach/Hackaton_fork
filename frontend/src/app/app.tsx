@@ -6,20 +6,24 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useQueryParamsStoreInit } from 'store/RootStore/hooks/useQueryParamsStoreInit';
 import { useCookiesStoreInit } from 'store/RootStore/hooks/useCookiesStoreInit';
 
-import Map from 'pages/Map';
+import Map from 'components/Map';
+import MapPage from "pages/MapPage";
+import Header from 'components/Header/Header';
+import s from './app.module.scss';
 
 export function App() {
   useQueryParamsStoreInit();
   useCookiesStoreInit();
 
   return (
-    <div>
-      <CookiesProvider>
+    <div className={s.app}>
+      {/* <Header /> */}
+      
         <Routes>
-          <Route path='/' element={<Map />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path='/' element={<CookiesProvider><MapPage /></CookiesProvider>} />
+          <Route path='/map' element={<CookiesProvider><Map /></CookiesProvider>} />
+          <Route path="*" element={<CookiesProvider><Navigate to="/" replace /></CookiesProvider>} />
         </Routes>
-      </CookiesProvider>
     </div>
   );
 }
