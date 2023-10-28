@@ -8,7 +8,7 @@ import { DetailsModel } from "utils/types";
 import s from './InfoPanel.module.scss';
 import Image from 'img/Frame 69.png';
 
-import {FC} from 'react';
+import {FC, memo} from 'react';
 
 import 'swiper/scss';
 //import 'swiper/scss/navigation';
@@ -140,4 +140,4 @@ const InfoPanel : FC<IInfoPanel> = ({ energyLevel }) => {
     );
 }
 
-export default InfoPanel;
+export default memo(InfoPanel);

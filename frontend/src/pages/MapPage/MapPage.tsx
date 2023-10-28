@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 
 import Map from 'components/Map';
 import { CellCoordinateType } from 'utils/types';
@@ -40,4 +40,4 @@ const MapPage = () => {
   );
 };
 
-export default MapPage;
+export default memo(MapPage);

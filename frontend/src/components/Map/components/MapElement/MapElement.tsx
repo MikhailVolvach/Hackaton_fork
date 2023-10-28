@@ -1,4 +1,4 @@
-import {FC, useCallback} from 'react';
+import {FC, memo, useCallback} from 'react';
 import classNames   from "classnames";
 import chroma from 'chroma-js';
 
@@ -30,4 +30,4 @@ const MapElement: FC<IMapElement> = ({ className = '', value = 0, onClick, coord
     )
 }
 
-export default MapElement;
+export default memo(MapElement);

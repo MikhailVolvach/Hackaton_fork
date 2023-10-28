@@ -3,8 +3,6 @@
     cursor: pointer;
     &__grid {
         display: grid;
-        grid-template-columns: repeat(100, 1fr);
-        grid-template-rows: repeat(100, 1fr);
     }
 
     &__cell {
