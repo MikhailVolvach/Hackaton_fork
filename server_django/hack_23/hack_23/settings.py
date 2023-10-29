@@ -34,6 +34,7 @@ REDIS_DB = 0  # Redis database index (default is 0)
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'app'
 ]
+
+ASGI_APPLICATION = 'hack_23.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

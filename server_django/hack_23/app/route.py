@@ -87,7 +87,7 @@ def astar(maze, start, end):
             child.g = current_node.g + 1
             height_differ = maze[child.position[0]][child.position[1]] - maze[current_node.position[0]][current_node.position[1]] 
             if height_differ > 0:
-                height_differ *= 13
+                height_differ *= 3
             child.h = ((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2)
             child.f = child.g + child.h + height_differ 
 
@@ -102,11 +102,9 @@ def astar(maze, start, end):
 
 def route(world_scaled, start, end):
     
-    print(world_scaled)
     print(start)
     print(end)
     path = astar(world_scaled, start, end)
-    print(path)
     return path
 
 

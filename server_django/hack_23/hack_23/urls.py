@@ -33,5 +33,9 @@ urlpatterns = [
     path(r'map/get', views.map_get),
     path(r'map/render', views.map_render),
 
-    path(r'route/generate', views.route_generate)
+    path(r'route/generate', views.route_generate),
+
+    path(r'database/get/wheels/', views.get_wheels),
+    path(r'database/get/panels/', views.get_panels),
+    path(r'database/get/other/', views.get_other),
 ]

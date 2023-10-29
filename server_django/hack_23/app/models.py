@@ -11,6 +11,9 @@ class MapElenent(models.Model):
 
     y_max = models.IntegerField(default=250)
     y_min = models.IntegerField(default=100)
+
+
+    
     # map = models.ForeignKey('Map', on_delete=models.CASCADE)
     # x = models.IntegerField()
     # y = models.IntegerField()

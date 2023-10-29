@@ -16,65 +16,68 @@ import copy
 from app.route import route
 
 
-step = 20
-subtrahend = 150
+step = 10
+subtrahend_x = 0
+subtrahend_y = 0
+
 
 @api_view(['GET'])
+def get_wheels(request, format=None):
+    response = requests.get("http://84.201.134.49:8001/get/wheels/")
+    response_data = response.json()
+    return Response(response_data)
+
+@api_view(['GET'])
+def get_panels(request, format=None):
+    response = requests.get("http://84.201.134.49:8001/get/panels/")
+    response_data = response.json()
+    return Response(response_data)
+
+@api_view(['GET'])
+def get_other(request, format=None):
+    response = requests.get("http://84.201.134.49:8001/get/others/")
+    response_data = response.json()
+    return Response(response_data)
+
+
+
+
+@api_view(['POST'])
 def route_generate(request, firmat=None):
     """
     генерирует маршрут для автопилота
     """
     # print(list)
     # print(list['current_y'])
+
+    end_x = request.data['x']
+    end_y = request.data['y']
+
     response = requests.get('http://84.201.134.49:8001/get_position')
     response_data = response.json()
     resp_data = copy.deepcopy(response_data)
     result = {'x': [resp_data['current_x']], 'y': [resp_data['current_y']]}
-    start_typle = (resp_data['current_x']-subtrahend, resp_data['current_y']-subtrahend)
-    end_typle = (resp_data['current_x']+10-subtrahend, resp_data['current_y']+10-subtrahend)
-    result_misha = {'x': [resp_data['current_x']-subtrahend], 'y': [resp_data['current_y']-subtrahend]}
+    start_typle = (resp_data['current_x']-subtrahend_x, resp_data['current_y']-subtrahend_y)
+    end_typle = (int(end_x), int(end_y))
+    result_misha = {'x': [resp_data['current_x']-subtrahend_x], 'y': [resp_data['current_y']-subtrahend_y]}
     maze_resp = requests.get('http://84.201.134.49:8000/map/render')
     maze = maze_resp.json()
     
-    # for i in range(10):
-        # resp_data['current_y'] = resp_data['current_y']+1
-    #     result['x'].append(resp_data['current_x'])
-    #     result['y'].append(resp_data['current_y'])
-    #     result_misha['x'].append(resp_data['current_x']-subtrahend)
-    #     result_misha['y'].append(resp_data['current_y']-subtrahend)
-    # for i in range(15):
-    #     resp_data['current_x'] = resp_data['current_x']-1
-    #     result['x'].append(resp_data['current_x'])
-    #     result['y'].append(resp_data['current_y'])
-    #     result_misha['x'].append(resp_data['current_x']-subtrahend)
-    #     result_misha['y'].append(resp_data['current_y']-subtrahend)
-    # for i in range(10):
-    #     resp_data['current_y'] = resp_data['current_y']+1
-    #     result['x'].append(resp_data['current_x'])
-    #     result['y'].append(resp_data['current_y'])
-    #     result_misha['x'].append(resp_data['current_x']-subtrahend)
-    #     result_misha['y'].append(resp_data['current_y']-subtrahend)
-    # for i in range(20):
-    #     resp_data['current_x'] = resp_data['current_x']-1
-    #     result['x'].append(resp_data['current_x'])
-    #     result['y'].append(resp_data['current_y'])
-    #     result_misha['x'].append(resp_data['current_x']-subtrahend)
-    #     result_misha['y'].append(resp_data['current_y']-subtrahend)
-    # for i in range(16):
-    #     resp_data['current_y'] = resp_data['current_y']+1
-    #     result['x'].append(resp_data['current_x'])
-    #     result['y'].append(resp_data['current_y'])
-    #     result_misha['x'].append(resp_data['current_x']-subtrahend)
-    #     result_misha['y'].append(resp_data['current_y']-subtrahend)
     
     path = route(maze, start_typle, end_typle)
     for i in range(len(path)):
-        result['x'].append(path[i][0]+subtrahend)
-        result['y'].append(path[i][1]+subtrahend)
+        result['x'].append(path[i][0]+subtrahend_x)
+        result['y'].append(path[i][1]+subtrahend_y)
         result_misha['x'].append(path[i][0])
         result_misha['y'].append(path[i][1])
+    global global_path_vova 
+    global_path_vova = result
+    print("-----------------------",global_path_vova)
+    with open('vova.txt', 'w') as file:
+    # Преобразуем элементы массива в строки и записываем их в файл
+        file.write(str(result) + '\n')
 
-    q = requests.post('http://84.201.134.49:8001/turn_autopilot_on/', data=result)
+    # q = requests.post('http://84.201.134.49:8001/turn_autopilot_on/', data=result)
     return Response(result_misha)
 
 
@@ -92,7 +95,7 @@ def map_generated(request, format=None):
     # Убираем лишние символы и превращаем строку в список чисел
     numbers = list(map(int, response.text.replace("[", "").replace("]", " ").split()))
     # Преобразуем список в двумерный массив (400 * 400)
-    two_dimensional_array = np.array(numbers).reshape(400, 400)
+    two_dimensional_array = np.array(numbers).reshape(100, 100)
     two_data = two_dimensional_array.tolist()
     json_data = json.dumps(two_data)
     # print(json_data)
@@ -124,13 +127,13 @@ def map_render(request, format=None):
     numbers = list(map(int, arr_elements.replace("[", "").replace("]", " ").replace(",", "").split()))
     # print(numbers)
     # Преобразуем список в двумерный массив (400 * 400)
-    two_dimensional_array = np.array(numbers).reshape(400, 400)
+    two_dimensional_array = np.array(numbers).reshape(100, 100)
 
     
-    world_scaled = two_dimensional_array[int(elements.y_min):int(elements.y_max):, int(elements.x_min):int(elements.x_max):]
+    # world_scaled = two_dimensional_array[int(elements.y_min):int(elements.y_max):, int(elements.x_min):int(elements.x_max):]
     # world_scaled = two_dimensional_array[100:250:, 150:300:]
     # serializer = MapElementSerializer(elements, many=True)
-    return Response(world_scaled)
+    return Response(two_dimensional_array)
 
 
 @api_view(['GET'])
@@ -145,13 +148,14 @@ def move_up(request, format=None):
         data_base.y_max = data_base.y_max + step
         data_base.y_min = data_base.y_min + step
         data_base.save()
-        global subtrahend 
-        subtrahend = subtrahend + step
+        global subtrahend_y
+        global subtrahend_x
+        subtrahend_y = subtrahend_y - step
         qw = requests.get('http://84.201.134.49:8001/map/render')
-    new_pos = (cur_pos_data['current_x']-subtrahend, cur_pos_data['current_y']+1-subtrahend)
+    new_pos = (cur_pos_data['current_x']-subtrahend_x, cur_pos_data['current_y']+1-subtrahend_y)
     new_pos_dict = {
-        'x': new_pos[0]+subtrahend,
-        'y': new_pos[1]+subtrahend,
+        'x': new_pos[0]+subtrahend_x,
+        'y': new_pos[1]+subtrahend_y,
     }
     q=requests.post('http://84.201.134.49:8001/set_position/', data=new_pos_dict)
     print(new_pos)
@@ -170,8 +174,9 @@ def move_down(request, format=None):
         data_base.y_max = data_base.y_max - step
         data_base.y_min = data_base.y_min - step
         data_base.save()
-        global subtrahend 
-        subtrahend = subtrahend - step
+        global subtrahend_y
+        global subtrahend_x
+        subtrahend_y = subtrahend_y - step
         qw = requests.get('http://84.201.134.49:8001/map/render')
     new_pos = (cur_pos_data['current_x'], cur_pos_data['current_y']-1)
     new_pos_dict = {
@@ -194,9 +199,11 @@ def move_right(request, format=None):
         data_base.x_max = data_base.x_max + step
         data_base.x_min = data_base.x_min + step
         data_base.save()
-        global subtrahend 
-        subtrahend = subtrahend + step
+        global subtrahend_y
+        global subtrahend_x
+        subtrahend_x = subtrahend_x - step
         qw = requests.get('http://84.201.134.49:8001/map/render')
+
     new_pos = (cur_pos_data['current_x']+1, cur_pos_data['current_y'])
     new_pos_dict = {
         'x': new_pos[0],
@@ -218,8 +225,9 @@ def move_left(request, format=None):
         data_base.x_max = data_base.x_max - step
         data_base.x_min = data_base.x_min - step
         data_base.save()
-        global subtrahend 
-        subtrahend = subtrahend - step
+        global subtrahend_y
+        global subtrahend_x
+        subtrahend_x = subtrahend_x - step
         qw = requests.get('http://84.201.134.49:8001/map/render')
     new_pos = (cur_pos_data['current_x']-1, cur_pos_data['current_y'])
     new_pos_dict = {
@@ -260,3 +268,5 @@ def register_view(request):
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
+
+

@@ -1,5 +1,5 @@
 """
-ASGI config for hack_23 project.
+ASGI config for station project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -10,7 +10,14 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 import os
 
 from django.core.asgi import get_asgi_application
+from hack_23 import routing
+from channels.routing import ProtocolTypeRouter, URLRouter
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hack_23.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'station.settings')
 
-application = get_asgi_application()
+application = ProtocolTypeRouter({
+    'http':get_asgi_application(),
+    "websocket": URLRouter(
+        routing.websocket_urlpatterns
+    ),
+})
